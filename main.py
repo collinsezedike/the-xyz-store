@@ -40,8 +40,9 @@ if uri.startswith("postgres://"):
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
-app.config['SQLALCHEMY_DATABASE_URI'] = uri
+app.config["SQLALCHEMY_DATABASE_URI"] = uri
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SQLALCHEMY_TABLE_PREFIX"] = "xyzstore_"
 Bootstrap5(app)
 
 db = SQLAlchemy(app)
