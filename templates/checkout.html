@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% block title %}xyz.store | Checkout {% endblock %}
 {% block content %}
-<div class="col-lg-8 checkout-construction-div">
-  <img class="checkout-construction-div-illustration" src="https://img.freepik.com/free-vector/bricklayer-concept-illustration_114360-6329.jpg?w=740&t=st=1659307853~exp=1659308453~hmac=de2dd47cf8e98a357e5d36d0ae0883c132d0dacf7978518e8cdded5d5586223e" alt="Site in development image" />
-  <h2>The payment processing gateway in under development.</h2>
-  <p>Checkout and payment is been refactored to provide you with a seamless shopping experience.</p>
-  <p>Nothing happens to your cart. No need to do anything. Everything will be setup properly soonest.</p>
-  <p>Sorry for any inconvinience. Meanwhile...</p>
-  <a href="{{ url_for('home') }}">Keep Shopping <i class="fa-solid fa-cart-shopping"></i></a>
+<div style="margin-bottom: 3rem;" class="container">
+    <div class="row cart-item">
+        <img class="checkout-construction-div-illustration" src="https://img.freepik.com/free-vector/scaffold-concept-illustration_114360-6964.jpg?w=740&t=st=1693819781~exp=1693820381~hmac=3f65683fc6368fc5055788719e71f256b088af93b574a006c1a34836c0354c4f" alt="Site in development image" />
+    </div>
+    <div class="checkout-construction-div">
+      <h2>The payment processing gateway is under development.</h2>
+      <p>Checkout and payment are been refactored to provide you with a seamless shopping experience. <br> Nothing happens to your cart. No need to do anything. Everything will be setup properly soonest. <br> Sorry for any inconvinience. Meanwhile...<a style="color: brown;" href="{{ url_for('home') }}">keep shopping <i class="fa-solid fa-cart-shopping"></i></a></p>
+    </div>
 </div>
-{% endblock %}
+ {% endblock %}
