@@ -42,14 +42,13 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 app.config["SQLALCHEMY_DATABASE_URI"] = uri
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_TABLE_PREFIX"] = "xyzstore_"
 Bootstrap5(app)
 
 db = SQLAlchemy(app)
 
 
 class User(UserMixin, db.Model):
-    __tablename__ = "users"
+    __tablename__ = "xyz_store_users"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
@@ -58,7 +57,7 @@ class User(UserMixin, db.Model):
 
 
 class Product(db.Model):
-    __tablename__ = "products"
+    __tablename__ = "xyz_store_products"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), unique=True, nullable=False)
     price = db.Column(db.Float, nullable=False)
@@ -67,7 +66,7 @@ class Product(db.Model):
 
 
 class Cart(db.Model):
-    __tablename__ = "carts"
+    __tablename__ = "xyz_store_carts"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), unique=True, nullable=False)
     price = db.Column(db.Float, nullable=False)
