@@ -73,7 +73,7 @@ class Cart(db.Model):
     description = db.Column(db.String, nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     img_url = db.Column(db.String(2048), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('xyz_store_users.id'))
 
 
 db.create_all()
@@ -166,7 +166,6 @@ def show_cart():
         return redirect(url_for("login"))
     else:
         cart = Cart.query.all()
-        print(len(cart))
         return render_template("cart.html", cart=cart)
 
 
