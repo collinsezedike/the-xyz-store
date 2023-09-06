@@ -165,7 +165,7 @@ def show_cart():
         flash("You need to be logged in!")
         return redirect(url_for("login"))
     else:
-        cart = Cart.query.all()
+        cart = Cart.query.filter_by(user_id=current_user.id).all()
         return render_template("cart.html", cart=cart)
 
 
@@ -175,16 +175,17 @@ def add_to_cart(product_id):
         return redirect(url_for("show_cart"))
     else:
         item_to_add = Product.query.get(product_id)
-        if Cart.query.filter_by(name=item_to_add.name).first():  # check if item is already in cart
-            cart_item =  Cart.query.filter_by(name=item_to_add.name).first()
+        if Cart.query.filter_by(name=item_to_add.name, user_id=current_user.id).first():  # check if item is already in cart
+            cart_item =  Cart.query.filter_by(name=item_to_add.name, user_id=current_user.id).first()
             cart_item.quantity += 1
             db.session.commit()
         else:
             new_cart_item = Cart(name=item_to_add.name, 
-                                    price=item_to_add.price,
-                                    description=item_to_add.description, 
-                                    img_url=item_to_add.img_url,
-                                    quantity=1)
+                                 price=item_to_add.price,
+                                 description=item_to_add.description,
+                                 img_url=item_to_add.img_url,
+                                 quantity=1,
+                                 user_id=current_user.id)
             db.session.add(new_cart_item)
             db.session.commit()
         return redirect(url_for("home"))
